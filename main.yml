@@ -5,7 +5,7 @@
   gather_facts: yes
 
   vars:
-    output_file: ./system_audit_report3.txt
+    output_file: ./system_audit_report.txt
 
   roles:
     - sysinfo
