@@ -1,0 +1,27 @@
+---
+- name: Full System Audit
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  vars:
+    output_file: ./system_audit_report3.txt
+
+  roles:
+    - sysinfo
+    - process
+    - packetinfo
+
+  tasks:
+    - name: Write raw output to file
+      copy:
+        content: |
+          === SYSTEM INFO ===
+          {{ sysinfo_text }}
+
+          === RUNNING SERVICES ===
+          {{ process_text }}
+
+          === INSTALLED PACKAGES ===
+          {{ package_text }}
+        dest: "{{ output_file }}"

@@ -1,0 +1,7 @@
+- name: Get system info
+  command: uname -a
+  register: sysinfo_raw
+
+- name: Save system info as fact
+  set_fact:
+    sysinfo_text: "{{ sysinfo_raw.stdout }}"

@@ -1,0 +1,7 @@
+- name: Get list of running services
+  command: systemctl list-units --type=service --state=running
+  register: running_services
+
+- name: Save running services as fact
+  set_fact:
+    process_text: "{{ running_services.stdout }}"
